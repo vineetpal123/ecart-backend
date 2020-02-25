@@ -1,26 +1,16 @@
-const Sequelize = require('sequelize');
-//Database
-const db = require('../config/database.js'); 
 
-// User model
-const User = db.define('vin_users', {
-  email: {
-    type: Sequelize.STRING
-  },
-  username: {
-    type: Sequelize.STRING
-  },
-  password: {
-    type: Sequelize.STRING
-  },
-  first_name: {
-    type: Sequelize.STRING
-  },
-  last_name: {
-    type: Sequelize.STRING
+const mongoose = require("../config/database.js");
+
+const schema = {
+  username: { type: mongoose.SchemaTypes.String, required: true },
+  email: { type: mongoose.SchemaTypes.String, required: true },
+  password: { 
+      type: mongoose.SchemaTypes.String, 
+      required: true, 
+      select: false
   }
-})
-
-
-
+};
+const collectionName = "user"; // Name of the collection of documents
+const userSchema = mongoose.Schema(schema);
+const User = mongoose.model(collectionName, userSchema);
 module.exports = User;

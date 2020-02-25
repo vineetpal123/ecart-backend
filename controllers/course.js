@@ -4,11 +4,12 @@ const models = require('../models/Course')
 module.exports = {        
     
     get: function(req, res){
-        
-        models.findAll().then(users => {res.json(users)})      
+        console.log('get')
+        models.find().then(users => {res.json(users)})      
     },
 
-    add: function(req, res){        
+    add: function(req, res){       
+    
         models.create(req.body)
         .then(users => res.json(users))
     },

@@ -12,8 +12,9 @@ const morgan = require('morgan');
 const fs = require('fs');
 const cors = require('cors');
 var bunyan = require('bunyan');
-//Database
-const db = require('./config/database.js'); 
+
+
+
 
 var logger = bunyan.createLogger({
   name: "api-logger",
@@ -23,16 +24,16 @@ var logger = bunyan.createLogger({
   }]
 })
 
-db
-  .authenticate()
-  .then(() => {
-    logger.info({name: "connection made"})
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-    logger.info({name: "connection made"})
-  });
+// db
+//   .authenticate()
+//   .then(() => {
+//     logger.info({name: "connection made"})
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//     logger.info({name: "connection made"})
+//   });
 
 
 
